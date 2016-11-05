@@ -15,6 +15,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PostcardListActivity" />
+        <activity android:name=".TemplateSelectionActivity" />
+        <activity android:name=".ViewCardActivity" />
+        <activity android:name=".EditPostcardActivity" />
+        <activity android:name=".PrintSendActivity" />
+        <activity android:name=".SendOptionsActivity" />
+        <activity android:name=".AddElementsActivity" />
+        <activity android:name=".ClipArtSelectionActivity" />
+        <activity android:name=".HandwritingGeneratorActivity"></activity>
     </application>
 
 </manifest>
