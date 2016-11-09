@@ -10,4 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.PostcardListActivity">
 
+    <TextView
+        android:text="postcard list view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="68dp"
+        android:id="@+id/textView2" />
 </RelativeLayout>
