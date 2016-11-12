@@ -4,10 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.gsu.electronicpostcard.R;
 
@@ -24,6 +24,8 @@ public class TemplateSelectionFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ImageView templateImage;
+
 
     // TODO: Rename and change types of parameters
     private int mParam1;
@@ -42,12 +44,12 @@ public class TemplateSelectionFragment extends Fragment {
      * @return A new instance of fragment TemplateSelectionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TemplateSelectionFragment newInstance(int pos) {
+    public static TemplateSelectionFragment newInstance(String imageName) {
         TemplateSelectionFragment fragment = new TemplateSelectionFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
-        args.putInt(ARG_PARAM1, pos);
+        args.putString(ARG_PARAM1, imageName);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,22 +58,39 @@ public class TemplateSelectionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getInt(ARG_PARAM1);
+//            mParam1 = getArguments().getInt(ARG_PARAM1);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
-            Log.v("onCreate", "" + mParam1);
+//            Log.v("onCreate", "" + mParam1);
+
+
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        TextView textView = new TextView(getActivity());
-//        textView.setText(R.string.hello_blank_fragment);
-//        return textView;
+
+        String imageName = getArguments().getString(ARG_PARAM1);
+//        Log.v("onCreateView", "" + imageName);
+
 
         View view = inflater.inflate(R.layout.fragment_template_selection, container, false);
-        Log.v("onCreateView", "" + mParam1);
+        templateImage = (ImageView)view.findViewById(R.id.template_image_view);
+
+        // set the image
+        int d = stringToDrawableResId(imageName);
+        templateImage.setBackgroundResource(d);
+
         return view;
+    }
+
+    public int stringToDrawableResId(String filename){
+
+        String name = filename;
+        int resid = getResources().getIdentifier(name, "drawable", getActivity().getPackageName());
+
+        return resid;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
