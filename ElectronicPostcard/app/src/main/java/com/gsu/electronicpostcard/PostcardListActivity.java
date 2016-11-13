@@ -1,6 +1,7 @@
 package com.gsu.electronicpostcard;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -75,7 +76,8 @@ public class PostcardListActivity extends AppCompatActivity {
     }
 
     public void onAddNewPostcard(View view){
-
+        Intent i = new Intent(this, TemplateSelectionActivity.class);
+        startActivity(i);
     }
 
 

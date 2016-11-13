@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/ok_template"
+        android:icon="@drawable/sign_check_icon"
+        android:title="OK"
+        compat:showAsAction="always"
+        />
+</menu>
