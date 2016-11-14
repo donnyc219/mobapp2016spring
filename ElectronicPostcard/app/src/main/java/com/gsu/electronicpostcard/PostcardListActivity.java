@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -72,6 +74,15 @@ public class PostcardListActivity extends AppCompatActivity {
         PostcardListViewAdaptor adaptor = new PostcardListViewAdaptor(getApplicationContext(), dataSource);
         listView = (ListView)findViewById(R.id.postcard_listview);
         listView.setAdapter(adaptor);
+
+        // onClickListener for items
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // when an item is clicked
+                Log.v("aaa", "ddd");
+            }
+        });
 
     }
 
