@@ -23,7 +23,7 @@ public class PostCard  implements Serializable {
         pages[1].setBackground(BitmapFactory.decodeResource(Model.context.getResources(), R.drawable.balloon1, options));
         pages[2].setBackground(BitmapFactory.decodeResource(Model.context.getResources(), R.drawable.flowers1, options));
         pages[3].setBackground(BitmapFactory.decodeResource(Model.context.getResources(), R.drawable.flowers, options));
-        pages[0].elementList.add(new PostCardClipArt(R.drawable.page_1));
+        pages[0].elementList.add(new PostCardClipArt(R.drawable.sign_check_icon));
         Model.selectedElement = pages[0].elementList.get(0);
         Model.selectedElement.positionX = PostCardPage.WIDTH / 2;
         Model.selectedElement.positionY = PostCardPage.HEIGHT / 2;

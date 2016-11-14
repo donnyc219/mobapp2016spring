@@ -23,6 +23,7 @@ public class EditPostcardActivity extends AppCompatActivity {
     private double originalScale, originalRotation;
     private int originalPositionX, originalPositionY;
     private int touchMode = 0;
+    int pageWidth = 0, pageHeight = 0, pageOffsetX = 0, pageOffsetY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +113,14 @@ public class EditPostcardActivity extends AppCompatActivity {
                         }
                         break;
                     case MotionEvent.ACTION_UP:
+                        if (touchMode != 1 && motionEvent.getPointerCount() == 1) {
+                            PostCardPage currentPage = Model.currentPostCard.pages[Model.currentPage];
+                            int x = (int) ((motionEvent.getX() - pageOffsetX)
+                                    * currentPage.bitmap.getWidth() / pageWidth);
+                            int y = (int) ((motionEvent.getY() - pageOffsetY)
+                                    * currentPage.bitmap.getHeight() / pageHeight);
+                            Model.selectedElement = currentPage.getSelectedElement(x, y);
+                        }
                         touchMode = 0;
                 }
                 return true;
@@ -138,24 +147,23 @@ public class EditPostcardActivity extends AppCompatActivity {
         currentPage.render();
         float pageRatio = (float) currentPage.bitmap.getWidth() / currentPage.bitmap.getHeight();
         float screenRatio = (float) canvasBitmap.getWidth() / canvasBitmap.getHeight();
-        int width = 0, height = 0, x = 0, y = 0;
         if (pageRatio < screenRatio) { // If screen is wider than page.
-            height = canvasBitmap.getHeight();
-            width = (int) (height * pageRatio);
+            pageHeight = canvasBitmap.getHeight();
+            pageWidth = (int) (pageHeight * pageRatio);
         } else {
-            width = canvasBitmap.getWidth();
-            height = (int) (width / pageRatio);
+            pageWidth = canvasBitmap.getWidth();
+            pageHeight = (int) (pageWidth / pageRatio);
         }
-        x = (canvasBitmap.getWidth() - width) / 2;
-        y = (canvasBitmap.getHeight() - height) / 2;
+        pageOffsetX = (canvasBitmap.getWidth() - pageWidth) / 2;
+        pageOffsetY = (canvasBitmap.getHeight() - pageHeight) / 2;
         Matrix matrix = new Matrix();
         RectF srcRect = new RectF(0, 0, currentPage.bitmap.getWidth(), currentPage.bitmap.getHeight());
-        RectF dstRect = new RectF(x, y, x + width, y + height);
+        RectF dstRect = new RectF(pageOffsetX, pageOffsetY, pageOffsetX + pageWidth, pageOffsetY + pageHeight);
         matrix.setRectToRect(srcRect, dstRect, Matrix.ScaleToFit.START);
         Paint paint = new Paint();
         paint.setFilterBitmap(true);
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(0xFFFFFFFF);
+        paint.setColor(0xFF99BBFF);
         Canvas canvas = new Canvas(canvasBitmap);
         canvas.drawRect(0, 0, canvasBitmap.getWidth(), canvasBitmap.getHeight(), paint);
         canvas.drawBitmap(currentPage.bitmap, matrix, paint);
