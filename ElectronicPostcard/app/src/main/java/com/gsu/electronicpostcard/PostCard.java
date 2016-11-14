@@ -19,12 +19,6 @@ public class PostCard  implements Serializable {
             pages[i] = new PostCardPage();
             pages[i].drawBoundingBox = true;
         }
-        pages[0].elementList.add(new PostCardClipArt(R.drawable.sign_check_icon));
-        pages[0].elementList.add(new PostCardClipArt(R.drawable.sign_check_icon));
-        Model.selectedElement = pages[0].elementList.get(0);
-        Model.selectedElement.positionX = PostCardPage.WIDTH / 2;
-        Model.selectedElement.positionY = PostCardPage.HEIGHT / 2;
-        pages[0].elementList.get(1).scale = 3;
     }
 
     public void changeTemplate(Bitmap template) {

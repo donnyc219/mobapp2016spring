@@ -38,7 +38,7 @@ public class AddElementsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_add_elements);
 
         ImageButton gal1 = (ImageButton) findViewById(R.id.gal);
         gal1.setOnClickListener(new View.OnClickListener() {
@@ -72,8 +72,11 @@ public class AddElementsActivity extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            BitmapFactory.decodeFile(picturePath);
-
+            PostCardPage currentPage = Model.currentPostCard.pages[Model.currentPage];
+            PostCardImage imageElement = new PostCardImage(BitmapFactory.decodeFile(picturePath));
+            currentPage.addElement(imageElement);
+            Intent intent = new Intent(this, EditPostcardActivity.class);
+            startActivity(intent);
         }
 
 
