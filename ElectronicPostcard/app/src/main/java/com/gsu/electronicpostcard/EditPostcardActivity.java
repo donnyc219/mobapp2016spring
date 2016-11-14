@@ -143,6 +143,7 @@ public class EditPostcardActivity extends AppCompatActivity {
                 if (Model.selectedElement != null) {
                     Model.currentPostCard.pages[Model.currentPage].deleteElement(Model.selectedElement);
                     Model.selectedElement = null;
+                    refreshPage();
                 }
             }
         });
