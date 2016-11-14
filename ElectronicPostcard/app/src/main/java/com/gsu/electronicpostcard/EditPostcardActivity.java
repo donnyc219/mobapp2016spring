@@ -1,5 +1,6 @@
 package com.gsu.electronicpostcard;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -56,7 +57,6 @@ public class EditPostcardActivity extends AppCompatActivity {
             });
         }
         refreshPageIcons();
-        Model.currentPostCard = new PostCard();
 
         // Add element edit control
         canvasView.setOnTouchListener(new View.OnTouchListener() {
@@ -127,6 +127,14 @@ public class EditPostcardActivity extends AppCompatActivity {
                         touchMode = 0;
                 }
                 return true;
+            }
+        });
+
+        findViewById(R.id.btnAddElement).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Model.context, AddElementsActivity.class);
+                startActivity(intent);
             }
         });
     }

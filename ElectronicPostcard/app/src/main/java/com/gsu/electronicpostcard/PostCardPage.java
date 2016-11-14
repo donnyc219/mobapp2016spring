@@ -34,9 +34,13 @@ public class PostCardPage  implements Serializable {
     public void render() {
         Paint paint = new Paint();
         paint.setFilterBitmap(true);
+        paint.setStyle(Paint.Style.FILL);
         Canvas canvas = new Canvas(bitmap);
         if (background != null) {
             canvas.drawBitmap(background, 0, 0, paint);
+        } else {
+            paint.setColor(0xFFFFFFFF);
+            canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
         }
         for (PostCardElement element : elementList) {
             element.render(bitmap);
