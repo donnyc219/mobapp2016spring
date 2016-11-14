@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_add_elements"
     android:layout_width="match_parent"
@@ -10,4 +11,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.AddElementsActivity">
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/handwritng"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="58dp"
+        android:id="@+id/hw"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/clipart"
+        android:layout_marginEnd="73dp"
+        android:id="@+id/ca"
+        android:layout_alignTop="@+id/hw"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Add Text"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_below="@+id/hw"
+        android:layout_alignStart="@+id/hw" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Clip Art"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_alignBaseline="@+id/editText"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignStart="@+id/ca" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/gallery"
+        android:id="@+id/gal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Gallery"
+        android:ems="10"
+        android:layout_marginTop="19dp"
+        android:id="@+id/editText3"
+        android:layout_below="@+id/gal"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
