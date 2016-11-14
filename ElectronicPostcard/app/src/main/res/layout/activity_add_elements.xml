@@ -21,7 +21,7 @@
         android:layout_below="@+id/hw"
         android:layout_toStartOf="@+id/gal" />
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/clipart"
@@ -30,7 +30,7 @@
         android:layout_alignTop="@+id/hw"
         android:layout_alignParentEnd="true" />
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gallery"
@@ -38,7 +38,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/handwritng"
