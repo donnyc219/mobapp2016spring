@@ -115,6 +115,10 @@ public class TemplateSelectionActivity extends AppCompatActivity {
     }
 
     public void onOKButton(View view){
+
+        int k = selectTempalteViewpager.getCurrentItem();
+        String imageFilename = templateFilename.get(k); // image name of the selected template
+
         Intent i = new Intent(this, EditPostcardActivity.class);
         startActivity(i);
     }
