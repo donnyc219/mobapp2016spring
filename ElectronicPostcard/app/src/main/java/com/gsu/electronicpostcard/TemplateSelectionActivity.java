@@ -115,7 +115,7 @@ public class TemplateSelectionActivity extends AppCompatActivity {
     }
 
     public void onOKButton(View view){
-        Intent i = new Intent(this, AddElementsActivity.class);
+        Intent i = new Intent(this, EditPostcardActivity.class);
         startActivity(i);
     }
 
