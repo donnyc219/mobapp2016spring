@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
 
 import com.gsu.fragments.TemplateSelectionFragment;
 
@@ -54,25 +54,25 @@ public class TemplateSelectionActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public boolean onOptionsItemSelected (MenuItem item){
-
-        switch (item.getItemId()) {
-
-
-            case R.id.ok_template:
-            {
-                // when user click ok (top right button)
-                Intent i = new Intent(this, ViewCardActivity.class);
-                startActivity(i);
-            }
-            break;
-            default:
-                break;
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    public boolean onOptionsItemSelected (MenuItem item){
+//
+//        switch (item.getItemId()) {
+//
+//
+//            case R.id.ok_template:
+//            {
+//                // when user click ok (top right button)
+//                Intent i = new Intent(this, ViewCardActivity.class);
+//                startActivity(i);
+//            }
+//            break;
+//            default:
+//                break;
+//
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     public ViewPager selectTempalteViewpager;
@@ -114,7 +114,10 @@ public class TemplateSelectionActivity extends AppCompatActivity {
         templateFilename.add("land4");
     }
 
-
+    public void onOKButton(View view){
+        Intent i = new Intent(this, AddElementsActivity.class);
+        startActivity(i);
+    }
 
 
 }
