@@ -137,6 +137,15 @@ public class EditPostcardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.btnDeleteElement).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Model.selectedElement != null) {
+                    Model.currentPostCard.pages[Model.currentPage].deleteElement(Model.selectedElement);
+                    Model.selectedElement = null;
+                }
+            }
+        });
         findViewById(R.id.btnTemplate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
