@@ -13,7 +13,7 @@ public abstract class PostCardElement implements Serializable{
     int positionX = 0, positionY = 0; // Position x and y are the coordinate of the center of the element.
     int width, height;
     double scale = 1;
-    double rotation;
+    double rotation = 0;
     String name = "";
 
     abstract public void render(Bitmap bitmap);
@@ -33,7 +33,7 @@ public abstract class PostCardElement implements Serializable{
             corner.y *= scale;
             int tempX = corner.x;
             corner.x = (int) (corner.x * Math.cos(rotation) - corner.y * Math.sin(rotation));
-            corner.y = (int) (tempX * Math.cos(rotation) + corner.y * Math.sin(rotation));
+            corner.y = (int) (tempX * Math.sin(rotation) + corner.y * Math.cos(rotation));
             corner.x += positionX;
             corner.y += positionY;
         }

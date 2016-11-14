@@ -1,6 +1,7 @@
 package com.gsu.electronicpostcard;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -13,19 +14,43 @@ import java.util.ArrayList;
  */
 
 public class PostCardPage  implements Serializable {
+    final static int WIDTH = 800;
+    final static int HEIGHT = 1311;
+    final static int CORNER_RADIUS = 10; // Size of the corner of the bounding box
+    boolean drawBoundingBox = false;
     Bitmap bitmap;
-    Bitmap background;
+    private Bitmap background;
     ArrayList<PostCardElement> elementList = new ArrayList<>();
 
-    public void render(Bitmap bitmap) {
+    public PostCardPage() {
+        bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
+        System.out.println(bitmap.isMutable());
+    }
+
+    public void setBackground(Bitmap inputBitmap) {
+        background = Bitmap.createScaledBitmap(inputBitmap, WIDTH, HEIGHT, true);
+    }
+
+    public void render() {
         Paint paint = new Paint();
         paint.setFilterBitmap(true);
         Canvas canvas = new Canvas(bitmap);
         if (background != null) {
-            canvas.drawBitmap(bitmap, 0, 0, paint);
+            canvas.drawBitmap(background, 0, 0, paint);
         }
         for (PostCardElement element : elementList) {
             element.render(bitmap);
+        }
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(0xFF55AAFF);
+        if (drawBoundingBox && Model.selectedElement != null && elementList.contains(Model.selectedElement)) {
+            Point[] corners = Model.selectedElement.getBoundingBox();
+            int colors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF, 0xFFFFFF00};
+            int i = 0;
+            for (Point corner : corners) {
+                paint.setColor(colors[i++]);
+                canvas.drawCircle((float) corner.x, (float) corner.y, CORNER_RADIUS, paint);
+            }
         }
     }
 
