@@ -1,20 +1,31 @@
 package com.gsu.electronicpostcard;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Jack on 11/11/2016.
  */
 
-public class PostCardPage {
+public class PostCardPage  implements Serializable {
+    Bitmap bitmap;
+    Bitmap background;
     ArrayList<PostCardElement> elementList = new ArrayList<>();
 
-    public void render(Bitmap canvas) {
+    public void render(Bitmap bitmap) {
+        Paint paint = new Paint();
+        paint.setFilterBitmap(true);
+        Canvas canvas = new Canvas(bitmap);
+        if (background != null) {
+            canvas.drawBitmap(bitmap, 0, 0, paint);
+        }
         for (PostCardElement element : elementList) {
-            element.render(canvas);
+            element.render(bitmap);
         }
     }
 
