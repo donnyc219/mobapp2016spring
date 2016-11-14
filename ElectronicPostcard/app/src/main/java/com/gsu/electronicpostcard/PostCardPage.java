@@ -55,7 +55,7 @@ public class PostCardPage  implements Serializable {
         for (int i = elementList.size() - 1; i >= 0; i--) {
             Point[] corner = elementList.get(i).getBoundingBox();
             boolean match = true;
-            for (int j = 0; j < corner.length; i++) {
+            for (int j = 0; j < corner.length; j++) {
                 Point vector1 = new Point(corner[j].x - x, corner[j].y - y);
                 Point vector2 = new Point(corner[(j + 1) % corner.length].x - corner[j].x,
                         corner[(j + 1) % corner.length].y - corner[j].y);

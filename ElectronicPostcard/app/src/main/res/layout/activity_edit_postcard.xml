@@ -58,7 +58,8 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/lytPageIcon"><![CDATA[
+        android:layout_above="@+id/lytPageIcon"
+        android:paddingBottom="20dp"><![CDATA[
 
         Button
             android:text="Button"
@@ -77,5 +78,6 @@
             android:layout_above="@+id/linearLayout"
             android:layout_alignParentStart="true"
             android:id="@+id/imgCanvas" />
+
     </RelativeLayout>
 </RelativeLayout>
