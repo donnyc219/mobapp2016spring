@@ -34,6 +34,7 @@ public class EditPostcardActivity extends AppCompatActivity {
         currentPointer[1] = new PointF();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_postcard);
+
         final ImageView canvasView = (ImageView) findViewById(R.id.imgCanvas);
         canvasView.post(new Runnable() {
             @Override
@@ -42,6 +43,7 @@ public class EditPostcardActivity extends AppCompatActivity {
                 refreshPage();
             }
         });
+
         for (int i = 0; i < pageButtons.length; i++) {
             pageButtons[i] = (ImageView) findViewById(getId("imgPage" + (i + 1), "id"));
             pageButtons[i].setOnClickListener(new View.OnClickListener() {
@@ -120,6 +122,7 @@ public class EditPostcardActivity extends AppCompatActivity {
                             int y = (int) ((motionEvent.getY() - pageOffsetY)
                                     * currentPage.bitmap.getHeight() / pageHeight);
                             Model.selectedElement = currentPage.getSelectedElement(x, y);
+                            refreshPage();
                         }
                         touchMode = 0;
                 }
