@@ -87,6 +87,7 @@ public class PostcardListActivity extends AppCompatActivity {
     }
 
     public void onAddNewPostcard(View view){
+        Model.currentPostCard = new PostCard();
         Intent i = new Intent(this, TemplateSelectionActivity.class);
         startActivity(i);
     }
