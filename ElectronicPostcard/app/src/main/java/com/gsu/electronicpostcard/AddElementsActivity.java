@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class AddElementsActivity extends AppCompatActivity {
     private void handwriting1() {
-        ImageView hw1 = (ImageView) findViewById(R.id.hw ); //1
+        ImageButton hw1 = (ImageButton) findViewById(R.id.hw ); //1
         hw1.setOnClickListener( new View.OnClickListener() { //2
             public void onClick(View v) {
                 Intent intent = new Intent(AddElementsActivity. this , //3
@@ -22,7 +23,7 @@ public class AddElementsActivity extends AppCompatActivity {
         });
     }
     private void clipart1() {
-        ImageView ca1 = (ImageView) findViewById(R.id.ca ); //1
+        ImageButton ca1 = (ImageButton) findViewById(R.id.ca ); //1
         ca1.setOnClickListener( new View.OnClickListener() { //2
             public void onClick(View v) {
                 Intent intent1 = new Intent(AddElementsActivity. this , //3
@@ -39,7 +40,7 @@ public class AddElementsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_elements);
 
-        ImageView gal1 =(ImageView) findViewById(R.id.gal);
+        ImageButton gal1 = (ImageButton) findViewById(R.id.gal);
         gal1.setOnClickListener(new View.OnClickListener() {
 
             @Override
