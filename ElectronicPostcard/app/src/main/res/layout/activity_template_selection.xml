@@ -6,10 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.gsu.electronicpostcard.TemplateSelectionActivity">
 
+
+
+
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/select_template_viewpager">
+        android:id="@+id/select_template_viewpager"
+        android:clickable="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
     </android.support.v4.view.ViewPager>
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/sign_check_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:clickable="true"
+        android:onClick="onOKButton"
+        android:layout_margin="10dp"/>
 </RelativeLayout>
