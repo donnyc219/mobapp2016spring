@@ -11,6 +11,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.EditPostcardActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/lytPageIcon"
+        android:paddingBottom="20dp"
+        android:layout_weight="0.25">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:color/background_light"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/imgCanvas" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/add_button"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="32dp"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/btnAddElement" />
+    </RelativeLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -18,7 +46,8 @@
         android:layout_marginBottom="0dp"
         android:layout_height="64dp"
         android:weightSum="1"
-        android:id="@+id/lytPageIcon">
+        android:id="@+id/lytPageIcon"
+        android:layout_weight="0.25">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -53,31 +82,4 @@
             android:tag="3" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/lytPageIcon"
-        android:paddingBottom="20dp"><![CDATA[
-
-        Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="42dp"
-            android:id="@+id/button3" />
-    ]]>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@android:color/background_light"
-            android:layout_above="@+id/linearLayout"
-            android:layout_alignParentStart="true"
-            android:id="@+id/imgCanvas" />
-
-    </RelativeLayout>
 </RelativeLayout>

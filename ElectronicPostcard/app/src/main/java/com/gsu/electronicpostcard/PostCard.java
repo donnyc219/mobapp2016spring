@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class PostCard  implements Serializable {
     PostCardPage[] pages = new PostCardPage[4];
-
+    String name = "";
     public PostCard() {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;

@@ -18,8 +18,6 @@
         <activity android:name=".TemplateSelectionActivity" />
         <activity android:name=".ViewCardActivity" />
         <activity android:name=".EditPostcardActivity">
-
-
         </activity>
         <activity android:name=".PrintSendActivity" />
         <activity android:name=".SendOptionsActivity" />
