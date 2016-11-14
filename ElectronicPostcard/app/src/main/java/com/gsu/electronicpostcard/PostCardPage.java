@@ -26,7 +26,6 @@ public class PostCardPage  implements Serializable {
     public PostCardPage() {
         bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
         doodle = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
-        System.out.println(bitmap.isMutable());
     }
 
     public void setBackground(Bitmap inputBitmap) {
@@ -35,12 +34,15 @@ public class PostCardPage  implements Serializable {
 
     public void addElement(PostCardElement element) {
         if (element.width > bitmap.getWidth() / 4) {
-            element.scale = (bitmap.getWidth() / 4) / element.width;
+            element.scale = (float) (bitmap.getWidth() / 4) / element.width;
         }
-        if (element.height > bitmap.getHeight() / 4) {
-            element.scale = (bitmap.getHeight() / 4) / element.height;
+        if (element.height * element.scale > bitmap.getHeight() / 4) {
+            element.scale = (float) (bitmap.getHeight() / 4) / (element.height * element.scale);
         }
+        element.positionX = bitmap.getWidth() / 2;
+        element.positionY = bitmap.getHeight() / 2;
         elementList.add(element);
+        Model.selectedElement = element;
     }
 
     public void deleteElement(PostCardElement element) {

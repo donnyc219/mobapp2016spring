@@ -37,15 +37,6 @@
             android:id="@+id/button"
             android:layout_alignEnd="@+id/btnAddElement" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:srcCompat="@drawable/add_button"
-            android:layout_marginLeft="16dp"
-            android:id="@+id/btnAddElement"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
-
         <Button
             android:text="Template"
             android:layout_width="wrap_content"
@@ -54,6 +45,22 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/btnTemplate"
             android:backgroundTint="@color/green" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/delete_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/btnDeleteElement" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/add_button"
+            android:id="@+id/btnAddElement"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
     <LinearLayout
