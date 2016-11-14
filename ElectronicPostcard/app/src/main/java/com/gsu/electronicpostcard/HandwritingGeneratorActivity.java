@@ -7,6 +7,7 @@ public class HandwritingGeneratorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Model.context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handwriting_generator);
     }

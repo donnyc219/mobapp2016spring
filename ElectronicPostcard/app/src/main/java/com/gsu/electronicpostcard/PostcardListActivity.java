@@ -53,6 +53,7 @@ public class PostcardListActivity extends AppCompatActivity {
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Model.context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postcard_list);
 

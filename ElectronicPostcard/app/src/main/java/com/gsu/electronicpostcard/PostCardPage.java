@@ -20,10 +20,12 @@ public class PostCardPage  implements Serializable {
     boolean drawBoundingBox = false;
     Bitmap bitmap;
     private Bitmap background;
+    private Bitmap doodle;
     ArrayList<PostCardElement> elementList = new ArrayList<>();
 
     public PostCardPage() {
         bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
+        doodle = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
         System.out.println(bitmap.isMutable());
     }
 
@@ -36,15 +38,20 @@ public class PostCardPage  implements Serializable {
         paint.setFilterBitmap(true);
         paint.setStyle(Paint.Style.FILL);
         Canvas canvas = new Canvas(bitmap);
+
+        // Draw background
+        paint.setColor(0xFFFFFFFF);
+        canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
         if (background != null) {
             canvas.drawBitmap(background, 0, 0, paint);
-        } else {
-            paint.setColor(0xFFFFFFFF);
-            canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
         }
+
+        // Draw elements
         for (PostCardElement element : elementList) {
             element.render(bitmap);
         }
+
+        // Draw bounding box.
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(0xFF55AAFF);
         if (drawBoundingBox && Model.selectedElement != null && elementList.contains(Model.selectedElement)) {
@@ -53,6 +60,9 @@ public class PostCardPage  implements Serializable {
                 canvas.drawCircle((float) corner.x, (float) corner.y, CORNER_RADIUS, paint);
             }
         }
+
+        // Draw doodle layer.
+        canvas.drawBitmap(doodle, 0, 0, paint);
     }
 
     public PostCardElement getSelectedElement(int x, int y) {
