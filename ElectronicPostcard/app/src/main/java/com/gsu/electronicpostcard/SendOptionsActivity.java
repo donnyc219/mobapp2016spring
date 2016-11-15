@@ -1,6 +1,7 @@
 package com.gsu.electronicpostcard;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Date;
 
 import static android.R.attr.value;
@@ -18,8 +20,7 @@ import static android.content.Intent.EXTRA_SUBJECT;
 import static android.content.Intent.EXTRA_TEXT;
 
 public class SendOptionsActivity extends AppCompatActivity {
-
-
+    Bitmap imageToStore;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -41,7 +42,8 @@ public class SendOptionsActivity extends AppCompatActivity {
             String mPath = Environment.getExternalStorageDirectory() + "/" + "Pictures/Screenshots/" + "1.jpg";
             Intent intent1 = new Intent();
             File imgFile = new  File("/sdcard/Images/test_image.jpg");
-
+            FileOutputStream outputStream = new FileOutputStream(imgFile);
+            imageToStore.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
             Toast.makeText(SendOptionsActivity.this, "The file is Stored at: "+mPath,
                     Toast.LENGTH_LONG).show();
 
@@ -61,6 +63,7 @@ public class SendOptionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        imageToStore = Model.currentPostCard.drawToBitmap();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_options);
 
@@ -68,9 +71,9 @@ public class SendOptionsActivity extends AppCompatActivity {
 
         ImageButton save = (ImageButton) findViewById(R.id.gallery);
         save.setOnClickListener(new  View.OnClickListener(){
-                                    public void onClick(View v) {
-                                        takescreen();
-                                    }
+            public void onClick(View v) {
+                takescreen();
+            }
         });
 
 
