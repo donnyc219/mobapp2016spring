@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -39,14 +41,7 @@ public class SendOptionsActivity extends AppCompatActivity {
 
         try {
             // image naming and path  to include sd card  appending name you choose for file
-            String mPath = Environment.getExternalStorageDirectory() + "/" + "Pictures/Screenshots/" + "1.jpg";
-            Intent intent1 = new Intent();
-            File imgFile = new  File("/sdcard/Images/test_image.jpg");
-            FileOutputStream outputStream = new FileOutputStream(imgFile);
-            imageToStore.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
-            Toast.makeText(SendOptionsActivity.this, "The file is Stored at: "+mPath,
-                    Toast.LENGTH_LONG).show();
-
+            MediaStore.Images.Media.insertImage(getContentResolver(), imageToStore, "Postcard", "Postcard");
         } catch (Throwable e) {
             // Several error may come out with file handling or OOM
             e.printStackTrace();
@@ -66,7 +61,7 @@ public class SendOptionsActivity extends AppCompatActivity {
         imageToStore = Model.currentPostCard.drawToBitmap();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_options);
-
+        ((ImageView) findViewById(R.id.imgPreview)).setImageBitmap(imageToStore);
         ImageButton email = (ImageButton) findViewById(R.id.mail);
 
         ImageButton save = (ImageButton) findViewById(R.id.gallery);
