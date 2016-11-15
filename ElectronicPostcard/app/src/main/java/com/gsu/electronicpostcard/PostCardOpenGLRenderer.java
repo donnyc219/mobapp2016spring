@@ -18,8 +18,8 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
-    final float CARD_ANGLE = 30f;
-    final float DISTANCE = 2.8f;
+    final float CARD_ANGLE = 40f;
+    final float DISTANCE = 3.6f;
     final float DECELERATION = .1f;
     float rotationX = 0;
     float rotationY = 0;
