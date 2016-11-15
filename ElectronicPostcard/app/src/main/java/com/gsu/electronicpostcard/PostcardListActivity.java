@@ -149,7 +149,7 @@ public class PostcardListActivity extends AppCompatActivity {
     public PostCard readSerializePostcard(String filename){
         ObjectInputStream input;
 //        String filename = "testFilemost.ptc";
-        filename += ".ptc";
+//        filename += ".ptc";
         String sdcardPath = FileHelper.getPostcardSerializePath() + "/" + filename;
         PostCard p = null;
 
