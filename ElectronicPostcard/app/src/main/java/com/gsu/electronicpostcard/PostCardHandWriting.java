@@ -1,6 +1,6 @@
 package com.gsu.electronicpostcard;
 
-import android.graphics.Bitmap;
+import android.graphics.Canvas;
 
 /**
  * Created by Jack on 11/11/2016.
@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class PostCardHandWriting extends PostCardElement {
     @Override
-    public void render(Bitmap bitmap) {
+    public void render(Canvas canvas) {
 
     }
 }

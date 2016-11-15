@@ -1,6 +1,6 @@
 package com.gsu.electronicpostcard;
 
-import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Point;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ public abstract class PostCardElement implements Serializable{
     double rotation = 0;
     String name = "";
 
-    abstract public void render(Bitmap bitmap);
+    abstract public void render(Canvas canvas);
 
     // Method to get the bounding box of the object.
     // The method returns an array of 4 points representing the 4 corners of the elements

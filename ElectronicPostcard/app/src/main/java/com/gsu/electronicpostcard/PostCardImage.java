@@ -23,15 +23,13 @@ public class PostCardImage extends PostCardElement {
         height = image.getHeight();
     }
     @Override
-    public void render(Bitmap bitmap) {
+    public void render(Canvas canvas) {
         Matrix matrix = new Matrix();
         matrix.setTranslate(-image.getWidth() / 2, -image.getHeight() / 2);
         matrix.postScale((float) scale, (float) scale);
         matrix.postRotate((float) Math.toDegrees(rotation));
         matrix.postTranslate(positionX, positionY);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint();
-        paint.setFilterBitmap(true);
-        canvas.drawBitmap(image, matrix, paint);
+        Model.paint.setFilterBitmap(true);
+        canvas.drawBitmap(image, matrix, Model.paint);
     }
 }

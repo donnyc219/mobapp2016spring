@@ -64,12 +64,12 @@ public class PostCardPage  implements Serializable {
 
         // Draw elements
         for (PostCardElement element : elementList) {
-            element.render(bitmap);
+            element.render(canvas);
         }
 
         // Draw bounding box.
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(0xFF55AAFF);
+        Model.paint.setStyle(Paint.Style.FILL);
+        Model.paint.setColor(0xFF55AAFF);
         if (drawBoundingBox && Model.selectedElement != null && elementList.contains(Model.selectedElement)) {
             Point[] corners = Model.selectedElement.getBoundingBox();
             for (Point corner : corners) {
