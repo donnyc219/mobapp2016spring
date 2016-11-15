@@ -11,6 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.ViewCardActivity">
 
+    <android.opengl.GLSurfaceView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/surfaceView"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/btnSave"
+        android:layout_marginBottom="32dp" />
+
     <ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -26,4 +36,5 @@
         android:id="@+id/btnEdit"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

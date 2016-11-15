@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class PostCardPage  implements Serializable {
     final static int WIDTH = 800;
-    final static int HEIGHT = 1311;
+    final static int HEIGHT = 1131;
     final static int CORNER_RADIUS = 20; // Size of the corner of the bounding box
     boolean drawBoundingBox = false;
     SerializableBitmap bitmap;
