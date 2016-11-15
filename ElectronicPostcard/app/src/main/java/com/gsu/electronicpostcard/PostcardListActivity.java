@@ -72,13 +72,13 @@ public class PostcardListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postcard_list);
 
-        String filename = FileHelper.getPostcardSerializePath();
-        List<File> files = getListFiles(new File(filename));
-
-        Log.v("files", "" + files.size());
-        for (File f : files){
-            Log.v("file name", "" + f.getName());
-        }
+//        String filename = FileHelper.getPostcardSerializePath();
+//        List<File> files = getListFiles(new File(filename));
+//
+//        Log.v("files", "" + files.size());
+//        for (File f : files){
+//            Log.v("file name", "" + f.getName());
+//        }
 
         dataSource = new ArrayList<String>();
         dataSource.add("hello");
@@ -226,12 +226,15 @@ public class PostcardListActivity extends AppCompatActivity {
         ArrayList<File> inFiles = new ArrayList<File>();
         File[] files = parentDir.listFiles();
         for (File file : files) {
-            if (file.isDirectory()) {
-                inFiles.addAll(getListFiles(file));
-            } else {
-                if(file.getName().endsWith(".ptc")){
-                    inFiles.add(file);
-                }
+//            if (file.isDirectory()) {
+//                inFiles.addAll(getListFiles(file));
+//            } else {
+//                if(file.getName().endsWith(".ptc")){
+//                    inFiles.add(file);
+//                }
+//            }
+            if(file.getName().endsWith(".ptc")){
+                inFiles.add(file);
             }
         }
         return inFiles;
