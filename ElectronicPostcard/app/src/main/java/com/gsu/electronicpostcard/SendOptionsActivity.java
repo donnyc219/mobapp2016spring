@@ -34,30 +34,14 @@ public class SendOptionsActivity extends AppCompatActivity {
      * @see android.provider.MediaStore.Images.Media (StoreThumbnail private method)
      */
 
-    private void takescreen(){
-
-        Date now = new Date();
-        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-
-        try {
-            // image naming and path  to include sd card  appending name you choose for file
-            MediaStore.Images.Media.insertImage(getContentResolver(), imageToStore, "Postcard", "Postcard");
-        } catch (Throwable e) {
-            // Several error may come out with file handling or OOM
-            e.printStackTrace();
-        }
-    }
-
-    private void openScreenshot(File imageFile) {
-        Intent intent1 = new Intent();
-        intent1.setAction(Intent.ACTION_VIEW);
-        Uri uri = Uri.fromFile(imageFile);
-        intent1.setDataAndType(uri, "image/*");
-        startActivity(intent1);
+    private String takescreen(){
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), imageToStore, "Postcard", "Postcard");
+        return path;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Model.context = this;
         imageToStore = Model.currentPostCard.drawToBitmap();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_options);
@@ -68,6 +52,7 @@ public class SendOptionsActivity extends AppCompatActivity {
         save.setOnClickListener(new  View.OnClickListener(){
             public void onClick(View v) {
                 takescreen();
+                Toast.makeText(Model.context, "Photo saved sucessfully!", Toast.LENGTH_SHORT);
             }
         });
 
@@ -76,7 +61,6 @@ public class SendOptionsActivity extends AppCompatActivity {
         ImageButton print = (ImageButton) findViewById(R.id.printer);
         print.setOnClickListener(new  View.OnClickListener(){
             public void onClick(View v) {
-
                 Intent myIntent = new Intent(SendOptionsActivity.this, PrintSendActivity.class);
                 myIntent.putExtra("key", value); //Optional parameters
                 SendOptionsActivity.this.startActivity(myIntent);
@@ -87,16 +71,14 @@ public class SendOptionsActivity extends AppCompatActivity {
 
 
             public void onClick(View v) {
-
-
-
+                String path = takescreen();
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("application/image");
-                intent.putExtra(EXTRA_EMAIL, new String[]{"some@email.address"});
+                intent.setType("image/png");
+                /*intent.putExtra(EXTRA_EMAIL, new String[]{"some@email.address"});
                 intent.putExtra(EXTRA_SUBJECT, "subject");
-                intent.putExtra(EXTRA_TEXT, "mail body");
+                intent.putExtra(EXTRA_TEXT, "mail body");*/
                 String mpath = Environment.getExternalStorageDirectory() + "/" + "Pictures/Screenshots/1.jpg";
-                intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + mpath));
+                intent.putExtra(Intent.EXTRA_STREAM, Uri.parse(path));
 
                 /*final PackageManager pm = getPackageManager();
                 final List<ResolveInfo> matches = pm.queryIntentActivities(intent, 0);

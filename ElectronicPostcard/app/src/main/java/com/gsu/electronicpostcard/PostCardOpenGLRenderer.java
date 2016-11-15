@@ -139,7 +139,7 @@ public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
         gl.glTranslatef(0, 0, -DISTANCE);
         gl.glRotatef(rotationX, 1, 0, 0);
         gl.glRotatef(rotationY, 0, 1, 0);
-        gl.glTranslatef(0, 0, -.5f);
+        gl.glTranslatef(0, 0, -.2f);
         gl.glPushMatrix();
         gl.glRotatef(CARD_ANGLE, 0, 1, 0);
         drawPage(gl, 0);
