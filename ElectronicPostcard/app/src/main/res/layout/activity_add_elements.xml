@@ -12,7 +12,7 @@
     tools:context="com.gsu.electronicpostcard.AddElementsActivity">
 
     <TextView
-        android:text="Add Text!"
+        android:text="  Add Text!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -34,28 +34,28 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/clipart"
         android:id="@+id/ca"
-        android:layout_alignTop="@+id/hw"
-        android:layout_alignStart="@+id/textView6" />
+        android:layout_above="@+id/textView5"
+        android:layout_alignEnd="@+id/textView6" />
 
     <TextView
-        android:text="Clipart"
+        android:text="   Clipart   "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
         android:textColor="@android:color/background_dark"
+        android:layout_marginStart="35dp"
         android:layout_alignBaseline="@+id/textView5"
         android:layout_alignBottom="@+id/textView5"
-        android:layout_toEndOf="@+id/gal"
-        android:layout_marginStart="14dp" />
+        android:layout_toEndOf="@+id/gal" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/handwritng"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="70dp"
         android:id="@+id/hw"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView5" />
+        android:layout_alignEnd="@+id/textView5" />
 
     <TextView
         android:text="Gallery"
@@ -65,15 +65,5 @@
         android:textColor="@android:color/background_dark"
         android:layout_below="@+id/gal"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Add Text!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:textColor="@android:color/background_dark"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignEnd="@+id/hw" />
 
 </RelativeLayout>
