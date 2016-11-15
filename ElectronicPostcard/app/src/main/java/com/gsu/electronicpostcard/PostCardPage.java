@@ -33,11 +33,9 @@ public class PostCardPage  implements Serializable {
     }
 
     public void addElement(PostCardElement element) {
+        element.scale = 1;
         if (element.width > bitmap.getWidth() / 4) {
             element.scale = (float) (bitmap.getWidth() / 4) / element.width;
-        }
-        if (element.height * element.scale > bitmap.getHeight() / 4) {
-            element.scale = (float) (bitmap.getHeight() / 4) / (element.height * element.scale);
         }
         element.positionX = bitmap.getWidth() / 2;
         element.positionY = bitmap.getHeight() / 2;
@@ -50,16 +48,15 @@ public class PostCardPage  implements Serializable {
     }
 
     public void render() {
-        Paint paint = new Paint();
-        paint.setFilterBitmap(true);
-        paint.setStyle(Paint.Style.FILL);
+        Model.paint.setFilterBitmap(true);
+        Model.paint.setStyle(Paint.Style.FILL);
         Canvas canvas = new Canvas(bitmap);
 
         // Draw background
-        paint.setColor(0xFFFFFFFF);
-        canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
+        Model.paint.setColor(0xFFFFFFFF);
+        canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), Model.paint);
         if (background != null) {
-            canvas.drawBitmap(background, 0, 0, paint);
+            canvas.drawBitmap(background, 0, 0, Model.paint);
         }
 
         // Draw elements
@@ -73,12 +70,12 @@ public class PostCardPage  implements Serializable {
         if (drawBoundingBox && Model.selectedElement != null && elementList.contains(Model.selectedElement)) {
             Point[] corners = Model.selectedElement.getBoundingBox();
             for (Point corner : corners) {
-                canvas.drawCircle((float) corner.x, (float) corner.y, CORNER_RADIUS, paint);
+                canvas.drawCircle((float) corner.x, (float) corner.y, CORNER_RADIUS, Model.paint);
             }
         }
 
         // Draw doodle layer.
-        canvas.drawBitmap(doodle, 0, 0, paint);
+        canvas.drawBitmap(doodle, 0, 0, Model.paint);
     }
 
     public PostCardElement getSelectedElement(int x, int y) {
