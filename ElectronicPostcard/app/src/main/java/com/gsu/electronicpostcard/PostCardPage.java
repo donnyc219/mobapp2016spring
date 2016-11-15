@@ -20,7 +20,7 @@ public class PostCardPage  implements Serializable {
     boolean drawBoundingBox = false;
     SerializableBitmap bitmap;
     private SerializableBitmap background;
-    private SerializableBitmap doodle;
+    SerializableBitmap doodle;
     private ArrayList<PostCardElement> elementList = new ArrayList<>();
 
     public PostCardPage() {

@@ -42,10 +42,10 @@ public class PostCard  implements Serializable {
 
         Matrix matrix = new Matrix();
         matrix.setTranslate(BITMAP_PADDING, BITMAP_PADDING);
-        canvas.drawBitmap(pages[0].bitmap.bitmap, matrix, null);
+        canvas.drawBitmap(pages[3].bitmap.bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING + PostCardPage.WIDTH, BITMAP_PADDING);
-        canvas.drawBitmap(pages[3].bitmap.bitmap, matrix, null);
+        canvas.drawBitmap(pages[0].bitmap.bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING, BITMAP_PADDING + BITMAP_GAP + PostCardPage.HEIGHT);
         canvas.drawBitmap(pages[1].bitmap.bitmap, matrix, null);

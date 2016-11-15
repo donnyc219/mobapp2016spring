@@ -16,7 +16,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
     final private float CARD_ANGLE = 40f;
     final private float DISTANCE = 3.6f;
-    final private float DECELERATION = .1f;
+    final private float DECELERATION = .4f;
     float rotationX = 0;
     float rotationY = 0;
     float rotationYVelocity = 0;
@@ -139,6 +139,7 @@ public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
         gl.glTranslatef(0, 0, -DISTANCE);
         gl.glRotatef(rotationX, 1, 0, 0);
         gl.glRotatef(rotationY, 0, 1, 0);
+        gl.glTranslatef(0, 0, -.5f);
         gl.glPushMatrix();
         gl.glRotatef(CARD_ANGLE, 0, 1, 0);
         drawPage(gl, 0);

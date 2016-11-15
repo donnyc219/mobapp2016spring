@@ -60,6 +60,23 @@
             android:id="@+id/btnAddElement"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/doodle_up"
+            android:id="@+id/btnDoodle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/erase_up"
+            android:id="@+id/btnErase"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/btnDoodle"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
     <LinearLayout
