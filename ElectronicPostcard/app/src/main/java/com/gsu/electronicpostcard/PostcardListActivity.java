@@ -2,6 +2,7 @@ package com.gsu.electronicpostcard;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +26,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.gsu.electronicpostcard.Model.context;
 
@@ -69,6 +71,14 @@ public class PostcardListActivity extends AppCompatActivity {
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postcard_list);
+
+        String filename = FileHelper.getPostcardSerializePath();
+        List<File> files = getListFiles(new File(filename));
+
+        Log.v("files", "" + files.size());
+        for (File f : files){
+            Log.v("file name", "" + f.getName());
+        }
 
         dataSource = new ArrayList<String>();
         dataSource.add("hello");
@@ -207,6 +217,24 @@ public class PostcardListActivity extends AppCompatActivity {
         Model.currentPostCard.name = filename;
         serializePostcard(Model.currentPostCard, filename);
 
+        // go toactivity
+        Intent i = new Intent(this, TemplateSelectionActivity.class);
+        startActivity(i);
+    }
+
+    private List<File> getListFiles(File parentDir) {
+        ArrayList<File> inFiles = new ArrayList<File>();
+        File[] files = parentDir.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                inFiles.addAll(getListFiles(file));
+            } else {
+                if(file.getName().endsWith(".ptc")){
+                    inFiles.add(file);
+                }
+            }
+        }
+        return inFiles;
     }
 
 }
