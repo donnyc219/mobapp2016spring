@@ -13,7 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import static com.gsu.electronicpostcard.Model.context;
 
 public class PostcardListActivity extends AppCompatActivity {
 
@@ -53,7 +60,7 @@ public class PostcardListActivity extends AppCompatActivity {
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Model.context = this;
+        context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postcard_list);
 
@@ -89,8 +96,33 @@ public class PostcardListActivity extends AppCompatActivity {
 
     public void onAddNewPostcard(View view){
         Model.currentPostCard = new PostCard();
+        serializePostcard(Model.currentPostCard);
         Intent i = new Intent(this, TemplateSelectionActivity.class);
         startActivity(i);
+    }
+
+    public void serializePostcard(PostCard p){
+
+        String filename = "testFilemost.srl";
+
+        ObjectOutput out = null;
+
+        // get the path to save the serialized file
+        String sdcardPath = FileHelper.getPostcardSerializePath() + "/" + filename;
+
+        try {
+            out = new ObjectOutputStream(new FileOutputStream(sdcardPath));
+            out.writeObject(p);
+            out.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Log.v("FileNotFoundException", "FileNotFoundException");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v("IOException", "IOException");
+        }
+
     }
 
 
