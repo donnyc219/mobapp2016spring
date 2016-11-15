@@ -121,10 +121,10 @@ public class PostcardListActivity extends AppCompatActivity {
 //        startActivity(i);
     }
 
-    public void serializePostcard(PostCard p, String filename){
+    public void serializePostcard(PostCard p){
 
 //        String filename = "testFilemost.ptc";
-        filename += ".ptc";
+        String filename = p.name + ".ptc";
 
         ObjectOutput out = null;
 
@@ -216,7 +216,7 @@ public class PostcardListActivity extends AppCompatActivity {
     public void goBackToActivity(String filename){
         Model.currentPostCard = new PostCard();
         Model.currentPostCard.name = filename;
-        serializePostcard(Model.currentPostCard, filename);
+        serializePostcard(Model.currentPostCard);
 
         // go toactivity
         Intent i = new Intent(this, TemplateSelectionActivity.class);
