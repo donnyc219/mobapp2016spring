@@ -72,6 +72,7 @@ public class PostcardListActivity extends AppCompatActivity {
     }
 
     ArrayList<String> dataSource;
+    PostcardListViewAdaptor adaptor;
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,32 +80,11 @@ public class PostcardListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postcard_list);
 
-//        String filename = FileHelper.getPostcardSerializePath();
-//        List<String> files = getListFiles(new File(filename));
-
-//        Log.v("files", "" + files.size());
-//        for (String f : files){
-//            Log.v("file name", "" + f.getName());
-//        }
 
         String filename = FileHelper.getPostcardSerializePath();
         dataSource = getListFiles(new File(filename));
-//        dataSource = new ArrayList<String>();
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
-//        dataSource.add("hello");
 
-        PostcardListViewAdaptor adaptor = new PostcardListViewAdaptor(getApplicationContext(), dataSource);
+        adaptor = new PostcardListViewAdaptor(getApplicationContext(), dataSource);
         listView = (ListView)findViewById(R.id.postcard_listview);
         listView.setAdapter(adaptor);
 
@@ -113,18 +93,23 @@ public class PostcardListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // when an item is clicked
-//                Log.v("aaa", "ddd" + );\
-//                dataSource
-//                itemClicked(i);
+//                String str = dataSource.get(i);
+                // grab postcard, deserialize file
+                itemClicked(i);
             }
 
         });
 
     }
 
-//    final public void itemClicked(int position){
+    final public void itemClicked(int position){
 //        Log.v("aaa", "ddd" + mdata);
-//    }
+        String filename = dataSource.get(position);
+        Model.currentPostCard = readSerializePostcard(filename);
+        Intent i = new Intent(this, ViewCardActivity.class);
+        startActivity(i);
+    }
+
     public void onAddNewPostcard(View view){
 //        Model.currentPostCard = new PostCard();
 //        serializePostcard(Model.currentPostCard);
@@ -161,9 +146,10 @@ public class PostcardListActivity extends AppCompatActivity {
 
     }
 
-    public PostCard readSerializePostcard(){
+    public PostCard readSerializePostcard(String filename){
         ObjectInputStream input;
-        String filename = "testFilemost.ptc";
+//        String filename = "testFilemost.ptc";
+        filename += ".ptc";
         String sdcardPath = FileHelper.getPostcardSerializePath() + "/" + filename;
         PostCard p = null;
 
@@ -235,6 +221,14 @@ public class PostcardListActivity extends AppCompatActivity {
         // go toactivity
         Intent i = new Intent(this, TemplateSelectionActivity.class);
         startActivity(i);
+
+        if (dataSource==null){
+            dataSource = new ArrayList<String>();
+        }
+
+        dataSource.add(filename);
+        adaptor.notifyDataSetChanged();
+        Log.v("count", "" + dataSource.size());
     }
 
     private ArrayList<String> getListFiles(File parentDir) {
