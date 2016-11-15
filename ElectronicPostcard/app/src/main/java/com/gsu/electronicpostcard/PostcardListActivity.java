@@ -225,6 +225,7 @@ public class PostcardListActivity extends AppCompatActivity {
     private List<File> getListFiles(File parentDir) {
         ArrayList<File> inFiles = new ArrayList<File>();
         File[] files = parentDir.listFiles();
+        if (files == null) return inFiles; // Empty list
         for (File file : files) {
 //            if (file.isDirectory()) {
 //                inFiles.addAll(getListFiles(file));
