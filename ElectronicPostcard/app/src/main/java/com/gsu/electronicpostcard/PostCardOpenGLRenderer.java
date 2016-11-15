@@ -35,8 +35,8 @@ public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
             1.0f, 1.0f
     };
     private int[] textureName = new int[4];
-    FloatBuffer vertexBuffer[] = new FloatBuffer[4];
-    FloatBuffer textureBuffer;
+    private FloatBuffer vertexBuffer[] = new FloatBuffer[4];
+    private FloatBuffer textureBuffer;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
