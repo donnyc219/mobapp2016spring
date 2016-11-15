@@ -4,21 +4,26 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ClipArtSelectionActivity extends AppCompatActivity {
 
         private static int RESULT_LOAD_IMAGE = 1;
 
-
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_clip_art_selection);
+            Grid = (GridView) findViewById(R.id.grid);
+            Grid.setAdapter(adapter);
+            View myview = gridview;
+            LayoutInflater li = getLayoutInflater();
+
 
             ImageView image1 = (ImageView) findViewById(R.id.img1);
             ImageView image2 = (ImageView) findViewById(R.id.img2);
@@ -31,9 +36,7 @@ public class ClipArtSelectionActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View arg0) {
 
-                    Intent i = new Intent(
-                            Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent i = new Intent( Intent.ACTION_PICK, EditPostcardActivity.class);
 
                     startActivityForResult(i, RESULT_LOAD_IMAGE);
                 }
@@ -47,7 +50,7 @@ public class ClipArtSelectionActivity extends AppCompatActivity {
 
             if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
                 Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                String[] filePathColumn = {.Images.Media.DATA };
 
                 Cursor cursor = getContentResolver().query(selectedImage,
                         filePathColumn, null, null, null);
