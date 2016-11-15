@@ -10,4 +10,79 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.PrintSendActivity">
 
+    <TextView
+        android:text="HURRAH!!! You are just one step away from sending your Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/printtext"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/colorFocusedHighlight"
+        android:fontFamily="casual"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="30sp" />
+
+    <TextView
+        android:text="NAME"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/printtext"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/printname"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:layout_below="@+id/printeditaddress1"
+        android:layout_alignParentStart="true"
+        android:id="@+id/printeditaddress2"
+        android:layout_alignParentEnd="true"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/printeditaddress1"
+        android:textSize="24sp"
+        android:layout_below="@+id/printaddress"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="PRINT AND SEND"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/printandsend"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:text="ADDRESS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:id="@+id/printaddress"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/printeditname"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/printeditname"
+        android:textSize="24sp"
+        android:layout_below="@+id/printname"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
