@@ -121,7 +121,7 @@ public class PostcardListActivity extends AppCompatActivity {
 //        startActivity(i);
     }
 
-    public void serializePostcard(PostCard p){
+    public static void serializePostcard(PostCard p){
 
 //        String filename = "testFilemost.ptc";
         String filename = p.name + ".ptc";

@@ -187,6 +187,7 @@ public class EditPostcardActivity extends AppCompatActivity {
         findViewById(R.id.btnDone).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PostcardListActivity.serializePostcard(Model.currentPostCard);
                 Intent intent = new Intent(Model.context, ViewCardActivity.class);
                 startActivity(intent);
             }
