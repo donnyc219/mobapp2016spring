@@ -11,6 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.AddElementsActivity">
 
+    <TextView
+        android:text="Add Text!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textView5"
+        android:textColor="@android:color/background_dark"
+        android:layout_below="@+id/hw"
+        android:layout_toStartOf="@+id/gal" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,10 +70,10 @@
         android:text="Add Text!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:id="@+id/textView5"
+        android:id="@+id/textView4"
         android:textColor="@android:color/background_dark"
-        android:layout_below="@+id/hw"
-        android:layout_toStartOf="@+id/gal" />
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignEnd="@+id/hw" />
 
 </RelativeLayout>

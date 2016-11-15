@@ -1,39 +1,21 @@
 package com.gsu.electronicpostcard;
 
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Date;
-import java.util.List;
 
 import static android.R.attr.value;
-import static android.content.Intent.*;
-import static com.gsu.electronicpostcard.R.drawable.gallery;
-import static com.gsu.electronicpostcard.R.id.activity_print_send;
+import static android.content.Intent.EXTRA_EMAIL;
+import static android.content.Intent.EXTRA_SUBJECT;
+import static android.content.Intent.EXTRA_TEXT;
 
 public class SendOptionsActivity extends AppCompatActivity {
 
@@ -42,17 +24,14 @@ public class SendOptionsActivity extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-
-
-    /**
+        /**
      * A copy of the Android internals StoreThumbnail method, it used with the insertImage to
      * populate the android.provider.MediaStore.Images.Media#insertImage with all the correct
      * meta data. The StoreThumbnail method is private so it must be duplicated here.
-     *
      * @see android.provider.MediaStore.Images.Media (StoreThumbnail private method)
      */
 
-    private void takescreen() {
+    private void takescreen(){
 
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
@@ -61,9 +40,9 @@ public class SendOptionsActivity extends AppCompatActivity {
             // image naming and path  to include sd card  appending name you choose for file
             String mPath = Environment.getExternalStorageDirectory() + "/" + "Pictures/Screenshots/" + "1.jpg";
             Intent intent1 = new Intent();
-            File imgFile = new File("/sdcard/Images/test_image.jpg");
+            File imgFile = new  File("/sdcard/Images/test_image.jpg");
 
-            Toast.makeText(SendOptionsActivity.this, "The file is Stored at: " + mPath,
+            Toast.makeText(SendOptionsActivity.this, "The file is Stored at: "+mPath,
                     Toast.LENGTH_LONG).show();
 
         } catch (Throwable e) {
@@ -88,15 +67,16 @@ public class SendOptionsActivity extends AppCompatActivity {
         ImageButton email = (ImageButton) findViewById(R.id.mail);
 
         ImageButton save = (ImageButton) findViewById(R.id.gallery);
-        save.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                takescreen();
-            }
+        save.setOnClickListener(new  View.OnClickListener(){
+                                    public void onClick(View v) {
+                                        takescreen();
+                                    }
         });
 
 
+
         ImageButton print = (ImageButton) findViewById(R.id.printer);
-        print.setOnClickListener(new View.OnClickListener() {
+        print.setOnClickListener(new  View.OnClickListener(){
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(SendOptionsActivity.this, PrintSendActivity.class);
@@ -109,6 +89,7 @@ public class SendOptionsActivity extends AppCompatActivity {
 
 
             public void onClick(View v) {
+
 
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -132,12 +113,14 @@ public class SendOptionsActivity extends AppCompatActivity {
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-    }
-}
 
-/**
- * ATTENTION: This was auto-generated to implement the App Indexing API.
- * See https://g.co/AppIndexing/AndroidStudio for more information.
- */
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    }
+
 
 

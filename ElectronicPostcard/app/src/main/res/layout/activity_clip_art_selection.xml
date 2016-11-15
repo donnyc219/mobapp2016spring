@@ -27,12 +27,20 @@
             android:layout_column="0" />
 
         <ImageView
+            android:layout_width="102dp"
+            android:layout_height="113dp"
+            app:srcCompat="@drawable/img2"
+            android:id="@+id/img2"
+            android:layout_row="3"
+            android:layout_column="2" />
+
+        <ImageView
             android:layout_width="93dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             app:srcCompat="@drawable/img8"
-            android:id="@+id/imageView9"
-            android:layout_row="2"
-            android:layout_column="0" />
+            android:id="@+id/img5"
+            android:layout_row="1"
+            android:layout_column="2" />
 
         <ImageView
             android:layout_width="105dp"
@@ -40,14 +48,6 @@
             app:srcCompat="@drawable/img1"
             android:id="@+id/img1"
             android:layout_row="0"
-            android:layout_column="1" />
-
-        <ImageView
-            android:layout_width="102dp"
-            android:layout_height="113dp"
-            app:srcCompat="@drawable/img2"
-            android:id="@+id/img2"
-            android:layout_row="2"
             android:layout_column="2" />
 
         <ImageView
@@ -55,8 +55,16 @@
             android:layout_height="95dp"
             app:srcCompat="@drawable/img4"
             android:id="@+id/img4"
-            android:layout_row="1"
+            android:layout_row="2"
             android:layout_column="2" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="96dp"
+            app:srcCompat="@drawable/img9"
+            android:id="@+id/img6"
+            android:layout_row="2"
+            android:layout_column="0" />
 
     </GridLayout>
 
