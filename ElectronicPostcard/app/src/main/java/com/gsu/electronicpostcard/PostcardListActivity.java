@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +27,6 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.gsu.electronicpostcard.Model.context;
 
@@ -60,6 +60,13 @@ public class PostcardListActivity extends AppCompatActivity {
                 convertView = inflater.inflate(R.layout.postcard_listview_item, parent, false);
             }
 
+            TextView tv = (TextView) convertView.findViewById(R.id.textView2);
+            String filename = mDataSource.get(position);
+
+            String[] parts = filename.split("\\.");
+
+            tv.setText(parts[0]);
+
             return convertView;
         }
     }
@@ -73,27 +80,29 @@ public class PostcardListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_postcard_list);
 
 //        String filename = FileHelper.getPostcardSerializePath();
-//        List<File> files = getListFiles(new File(filename));
-//
+//        List<String> files = getListFiles(new File(filename));
+
 //        Log.v("files", "" + files.size());
-//        for (File f : files){
+//        for (String f : files){
 //            Log.v("file name", "" + f.getName());
 //        }
 
-        dataSource = new ArrayList<String>();
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
-        dataSource.add("hello");
+        String filename = FileHelper.getPostcardSerializePath();
+        dataSource = getListFiles(new File(filename));
+//        dataSource = new ArrayList<String>();
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
+//        dataSource.add("hello");
 
         PostcardListViewAdaptor adaptor = new PostcardListViewAdaptor(getApplicationContext(), dataSource);
         listView = (ListView)findViewById(R.id.postcard_listview);
@@ -104,12 +113,18 @@ public class PostcardListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // when an item is clicked
-                Log.v("aaa", "ddd");
+//                Log.v("aaa", "ddd" + );\
+//                dataSource
+//                itemClicked(i);
             }
+
         });
 
     }
 
+//    final public void itemClicked(int position){
+//        Log.v("aaa", "ddd" + mdata);
+//    }
     public void onAddNewPostcard(View view){
 //        Model.currentPostCard = new PostCard();
 //        serializePostcard(Model.currentPostCard);
@@ -222,8 +237,8 @@ public class PostcardListActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private List<File> getListFiles(File parentDir) {
-        ArrayList<File> inFiles = new ArrayList<File>();
+    private ArrayList<String> getListFiles(File parentDir) {
+        ArrayList<String> inFiles = new ArrayList<String>();
         File[] files = parentDir.listFiles();
         if (files == null) return inFiles; // Empty list
         for (File file : files) {
@@ -235,7 +250,10 @@ public class PostcardListActivity extends AppCompatActivity {
 //                }
 //            }
             if(file.getName().endsWith(".ptc")){
-                inFiles.add(file);
+                String str = file.getName();
+//                str.split(".");
+//                file.getName().split(".")[0];
+                inFiles.add(file.getName());
             }
         }
         return inFiles;
