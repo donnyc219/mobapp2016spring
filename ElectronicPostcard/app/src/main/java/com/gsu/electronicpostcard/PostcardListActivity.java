@@ -1,9 +1,10 @@
 package com.gsu.electronicpostcard;
 
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,13 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 import static com.gsu.electronicpostcard.Model.context;
@@ -95,15 +101,20 @@ public class PostcardListActivity extends AppCompatActivity {
     }
 
     public void onAddNewPostcard(View view){
-        Model.currentPostCard = new PostCard();
-        serializePostcard(Model.currentPostCard);
-        Intent i = new Intent(this, TemplateSelectionActivity.class);
-        startActivity(i);
+//        Model.currentPostCard = new PostCard();
+//        serializePostcard(Model.currentPostCard);
+//        readSerializePostcard();
+
+        askFilename();
+
+//        Intent i = new Intent(this, TemplateSelectionActivity.class);
+//        startActivity(i);
     }
 
-    public void serializePostcard(PostCard p){
+    public void serializePostcard(PostCard p, String filename){
 
-        String filename = "testFilemost.srl";
+//        String filename = "testFilemost.ptc";
+        filename += ".ptc";
 
         ObjectOutput out = null;
 
@@ -125,6 +136,77 @@ public class PostcardListActivity extends AppCompatActivity {
 
     }
 
+    public PostCard readSerializePostcard(){
+        ObjectInputStream input;
+        String filename = "testFilemost.ptc";
+        String sdcardPath = FileHelper.getPostcardSerializePath() + "/" + filename;
+        PostCard p = null;
 
+        try {
+            input = new ObjectInputStream(new FileInputStream(new File(sdcardPath)));
+            p = (PostCard) input.readObject();
+
+            input.close();
+
+        } catch (StreamCorruptedException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (p==null){
+
+            Log.v("p", "null");
+        } else {
+
+            Log.v("p", "not null");
+        }
+
+        return p;
+    }
+
+
+    public void askFilename(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Input a file name");
+
+
+        // Set up the input
+        final EditText input = new EditText(this);
+
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+//        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String filename = input.getText().toString();
+
+                goBackToActivity(filename);
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    public void goBackToActivity(String filename){
+        Model.currentPostCard = new PostCard();
+        Model.currentPostCard.name = filename;
+        serializePostcard(Model.currentPostCard, filename);
+
+    }
 
 }
