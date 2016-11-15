@@ -154,6 +154,13 @@ public class EditPostcardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.btnDone).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Model.context, ViewCardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void refreshPageIcons() {
