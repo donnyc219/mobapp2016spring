@@ -1,19 +1,12 @@
 package com.gsu.electronicpostcard;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.GridView;
-import android.widget.ImageView;
 
 public class ClipArtSelectionActivity extends AppCompatActivity {
 
+    /*
         private static int RESULT_LOAD_IMAGE = 1;
+
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -73,4 +66,5 @@ public class ClipArtSelectionActivity extends AppCompatActivity {
 
 
         }
+        */
 }
