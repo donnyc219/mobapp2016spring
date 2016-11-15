@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.opengl.GLUtils;
-import android.view.Surface;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,9 +12,6 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-/**
- * Created by Jack on 11/15/2016.
- */
 
 public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
     final float CARD_ANGLE = 40f;
