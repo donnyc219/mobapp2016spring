@@ -53,7 +53,6 @@ public class ViewCardActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +66,5 @@ public class ViewCardActivity extends AppCompatActivity {
                 ViewCardActivity.this.startActivity(myIntent);
             }
         });
-
-
-
-
     }
 }
-
