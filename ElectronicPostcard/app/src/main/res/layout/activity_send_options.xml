@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_send_options"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.gsu.electronicpostcard.SendOptionsActivity">
+
+    <ImageButton
+        android:src="@drawable/printer"
+        android:id="@+id/printer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+
+        android:src="@drawable/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:id="@+id/mail"
+        android:layout_above="@+id/printer"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+
+        android:src="@drawable/gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gallery"
+        android:layout_alignTop="@+id/mail"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Please select whichever option suits you Best"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sendtext"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="?android:attr/colorFocusedHighlight"
+        android:fontFamily="casual"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="30sp" />
+</RelativeLayout>
