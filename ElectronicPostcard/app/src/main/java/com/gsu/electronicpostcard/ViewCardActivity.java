@@ -103,7 +103,16 @@ public class ViewCardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        findViewById(R.id.btnDeleteCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String path = FileHelper.getPostcardSerializePath() + "/" + Model.currentPostCard.name + ".ptc";
+                File toDelete = new File(path);
+                System.out.println(toDelete.delete());
+                Intent intent = new Intent(Model.context, PostcardListActivity.class);
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.btnSave).setOnClickListener(new  View.OnClickListener(){
             public void onClick(View v) {
                 takescreen();

@@ -16,6 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.File;
+
 public class EditPostcardActivity extends AppCompatActivity {
     boolean doodle = false;
     boolean erase = false;
