@@ -10,7 +10,7 @@ import android.graphics.Paint;
  */
 
 public class PostCardImage extends PostCardElement {
-    Bitmap image = null;
+    SerializableBitmap image = null;
     public PostCardImage() {
         super();
         width = 100;
@@ -18,7 +18,7 @@ public class PostCardImage extends PostCardElement {
     }
     public PostCardImage(Bitmap image) {
         super();
-        this.image = Bitmap.createBitmap(image);
+        this.image = new SerializableBitmap(Bitmap.createBitmap(image));
         width = image.getWidth();
         height = image.getHeight();
     }
@@ -30,6 +30,6 @@ public class PostCardImage extends PostCardElement {
         matrix.postRotate((float) Math.toDegrees(rotation));
         matrix.postTranslate(positionX, positionY);
         Model.paint.setFilterBitmap(true);
-        canvas.drawBitmap(image, matrix, Model.paint);
+        canvas.drawBitmap(image.bitmap, matrix, Model.paint);
     }
 }

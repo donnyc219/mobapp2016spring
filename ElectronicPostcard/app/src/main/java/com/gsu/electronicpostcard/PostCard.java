@@ -18,8 +18,6 @@ public class PostCard  implements Serializable {
     PostCardPage[] pages = new PostCardPage[4];
     String name = "";
     public PostCard() {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         for (int i = 0; i < pages.length; i++) {
             pages[i] = new PostCardPage();
             pages[i].drawBoundingBox = true;
@@ -44,17 +42,17 @@ public class PostCard  implements Serializable {
 
         Matrix matrix = new Matrix();
         matrix.setTranslate(BITMAP_PADDING, BITMAP_PADDING);
-        canvas.drawBitmap(pages[0].bitmap, matrix, null);
+        canvas.drawBitmap(pages[0].bitmap.bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING + PostCardPage.WIDTH, BITMAP_PADDING);
-        canvas.drawBitmap(pages[3].bitmap, matrix, null);
+        canvas.drawBitmap(pages[3].bitmap.bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING, BITMAP_PADDING + BITMAP_GAP + PostCardPage.HEIGHT);
-        canvas.drawBitmap(pages[1].bitmap, matrix, null);
+        canvas.drawBitmap(pages[1].bitmap.bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING + PostCardPage.WIDTH,
                 BITMAP_PADDING + BITMAP_GAP + PostCardPage.HEIGHT);
-        canvas.drawBitmap(pages[2].bitmap, matrix, null);
+        canvas.drawBitmap(pages[2].bitmap.bitmap, matrix, null);
         return result;
     }
 }

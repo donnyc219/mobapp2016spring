@@ -194,7 +194,7 @@ public class EditPostcardActivity extends AppCompatActivity {
         paint.setColor(0xFF99BBFF);
         Canvas canvas = new Canvas(canvasBitmap);
         canvas.drawRect(0, 0, canvasBitmap.getWidth(), canvasBitmap.getHeight(), paint);
-        canvas.drawBitmap(currentPage.bitmap, matrix, paint);
+        canvas.drawBitmap(currentPage.bitmap.bitmap, matrix, paint);
         ((ImageView) findViewById(R.id.imgCanvas)).setImageBitmap(canvasBitmap);
     }
 

@@ -18,18 +18,18 @@ public class PostCardPage  implements Serializable {
     final static int HEIGHT = 1311;
     final static int CORNER_RADIUS = 20; // Size of the corner of the bounding box
     boolean drawBoundingBox = false;
-    Bitmap bitmap;
-    private Bitmap background;
-    private Bitmap doodle;
+    SerializableBitmap bitmap;
+    private SerializableBitmap background;
+    private SerializableBitmap doodle;
     private ArrayList<PostCardElement> elementList = new ArrayList<>();
 
     public PostCardPage() {
-        bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
-        doodle = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
+        bitmap = new SerializableBitmap(Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888));
+        doodle = new SerializableBitmap(Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888));
     }
 
     public void setBackground(Bitmap inputBitmap) {
-        background = Bitmap.createScaledBitmap(inputBitmap, WIDTH, HEIGHT, true);
+        background = new SerializableBitmap(Bitmap.createScaledBitmap(inputBitmap, WIDTH, HEIGHT, true));
     }
 
     public void addElement(PostCardElement element) {
@@ -50,13 +50,13 @@ public class PostCardPage  implements Serializable {
     public void render() {
         Model.paint.setFilterBitmap(true);
         Model.paint.setStyle(Paint.Style.FILL);
-        Canvas canvas = new Canvas(bitmap);
+        Canvas canvas = new Canvas(bitmap.bitmap);
 
         // Draw background
         Model.paint.setColor(0xFFFFFFFF);
         canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), Model.paint);
         if (background != null) {
-            canvas.drawBitmap(background, 0, 0, Model.paint);
+            canvas.drawBitmap(background.bitmap, 0, 0, Model.paint);
         }
 
         // Draw elements
@@ -75,7 +75,7 @@ public class PostCardPage  implements Serializable {
         }
 
         // Draw doodle layer.
-        canvas.drawBitmap(doodle, 0, 0, Model.paint);
+        canvas.drawBitmap(doodle.bitmap, 0, 0, Model.paint);
     }
 
     public PostCardElement getSelectedElement(int x, int y) {

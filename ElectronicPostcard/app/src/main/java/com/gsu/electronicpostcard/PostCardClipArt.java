@@ -12,7 +12,7 @@ public class PostCardClipArt extends PostCardImage {
         super();
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        image = BitmapFactory.decodeResource(Model.context.getResources(), resourceId, options);
+        image = new SerializableBitmap(BitmapFactory.decodeResource(Model.context.getResources(), resourceId, options));
         width = image.getWidth();
         height = image.getHeight();
     }
