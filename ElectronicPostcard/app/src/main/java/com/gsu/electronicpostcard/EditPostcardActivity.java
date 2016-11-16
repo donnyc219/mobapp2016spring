@@ -6,12 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.graphics.Xfermode;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -47,6 +44,8 @@ public class EditPostcardActivity extends AppCompatActivity {
             @Override
             public void run() {
                 canvasBitmap = Bitmap.createBitmap(canvasView.getWidth(), canvasView.getHeight(), Bitmap.Config.ARGB_8888);
+                receivedImageUri = getIntent().getParcelableExtra(IMAGE_URI_KEY);
+                imageView.setImageURI(receivedImageUri);
                 refreshPage();
             }
         });
