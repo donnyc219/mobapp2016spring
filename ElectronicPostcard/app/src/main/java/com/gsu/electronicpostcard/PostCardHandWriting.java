@@ -24,7 +24,7 @@ public class PostCardHandWriting extends PostCardElement {
         Model.paint.setTextSize(20);
         Model.paint.setTypeface(Typeface.create("cursive", Typeface.NORMAL));
         Matrix matrix = new Matrix();
-        matrix.setTranslate(-width / 2, -height / 2 + lineHeight + 4);
+        matrix.setTranslate(-width / 2, -height / 2 + lineHeight - 2);
         matrix.postScale((float) scale, (float) scale);
         matrix.postRotate((float) Math.toDegrees(rotation));
         matrix.postTranslate(positionX, positionY);
