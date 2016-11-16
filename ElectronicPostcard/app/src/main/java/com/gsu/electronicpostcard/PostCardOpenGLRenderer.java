@@ -16,8 +16,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
     final private float CARD_ANGLE = 40f;
     final private float DISTANCE = 3.6f;
-    final private float DECELERATION = .4f;
-    float rotationX = 0;
+    final private float DECELERATION = .12f;
+    float rotationX = 30;
     float rotationY = 0;
     float rotationYVelocity = 0;
     float fov = 60;
@@ -87,6 +87,8 @@ public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
             page.drawBoundingBox = true;
             createTexture(gl, page.bitmap.bitmap, i);
         }
+
+        rotationYVelocity = -(float) Math.sqrt(2 * DECELERATION * 360); // For giggles
     }
 
     private void createTexture(GL10 gl, Bitmap bitmap, int textureIndex) {

@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/txtHandwriting"
         android:fontFamily="cursive"
         android:textSize="24sp"
         android:layout_alignParentTop="true"
@@ -23,13 +23,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="false"
         android:layout_alignParentRight="false"
-        android:gravity="center_horizontal"
-        android:hint="Enter text here" />
+        android:hint="Enter text here"
+        android:gravity="top|left" />
 
     <ImageButton
         app:srcCompat="@drawable/sign_check_icon"
         android:background="@null"
-        android:id="@+id/imageView"
+        android:id="@+id/btnCreateText"
         android:layout_width="64dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
