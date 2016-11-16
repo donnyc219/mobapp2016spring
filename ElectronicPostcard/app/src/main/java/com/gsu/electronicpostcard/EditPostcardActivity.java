@@ -44,8 +44,6 @@ public class EditPostcardActivity extends AppCompatActivity {
             @Override
             public void run() {
                 canvasBitmap = Bitmap.createBitmap(canvasView.getWidth(), canvasView.getHeight(), Bitmap.Config.ARGB_8888);
-                receivedImageUri = getIntent().getParcelableExtra(IMAGE_URI_KEY);
-                imageView.setImageURI(receivedImageUri);
                 refreshPage();
             }
         });
