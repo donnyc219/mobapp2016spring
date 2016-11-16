@@ -41,9 +41,17 @@
     <ImageView
         app:srcCompat="@drawable/list_button"
         android:id="@+id/btnBackToList"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_width="45dp"
-        android:layout_height="45dp" />
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        app:srcCompat="@drawable/delete_button_2"
+        android:id="@+id/btnDeleteCard"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
