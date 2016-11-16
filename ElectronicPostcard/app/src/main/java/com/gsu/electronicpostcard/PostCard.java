@@ -25,9 +25,11 @@ public class PostCard  implements Serializable {
     }
 
     public void changeTemplate(Bitmap template) {
-        for (int i = 0; i < pages.length; i++) {
-            pages[i].setBackground(template);
-        }
+        pages[0].setBackground(template);
+        pages[3].setBackground(template);
+        Bitmap blank = Bitmap.createBitmap(PostCardPage.WIDTH, PostCardPage.HEIGHT, Bitmap.Config.ARGB_8888);
+        pages[1].setBackground(blank);
+        pages[2].setBackground(blank);
     }
 
     public Bitmap drawToBitmap() {
