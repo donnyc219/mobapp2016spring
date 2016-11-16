@@ -11,11 +11,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gsu.electronicpostcard.HandwritingGeneratorActivity">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:id="@+id/editText"
         android:fontFamily="cursive"
@@ -23,16 +21,20 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/imageView"
-
-        />
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:gravity="center_horizontal"
+        android:hint="Enter text here" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:srcCompat="@drawable/sign_check_icon"
         android:background="@null"
         android:id="@+id/imageView"
+        android:layout_width="64dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_height="64dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        />
 </RelativeLayout>

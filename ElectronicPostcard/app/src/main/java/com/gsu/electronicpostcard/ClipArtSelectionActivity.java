@@ -4,15 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 
 public class ClipArtSelectionActivity extends AppCompatActivity {
 
-    /*
         private static int RESULT_LOAD_IMAGE = 1;
 
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+//        @Override
+        public void onCreate() {
+/*            super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_clip_art_selection);
-            Grid = (GridView) findViewById(R.id.grid);
+            /*Grid = (GridView) findViewById(R.id.grid);
             Grid.setAdapter(adapter);
             View myview = gridview;
             LayoutInflater li = getLayoutInflater();
@@ -33,10 +32,10 @@ public class ClipArtSelectionActivity extends AppCompatActivity {
 
                     startActivityForResult(i, RESULT_LOAD_IMAGE);
                 }
-            });
+            });*/
         }
 
-
+/*
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
@@ -59,12 +58,6 @@ public class ClipArtSelectionActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, EditPostcardActivity.class);
                 startActivity(intent);
             }
-
-
-
-
-
-
         }
         */
 }

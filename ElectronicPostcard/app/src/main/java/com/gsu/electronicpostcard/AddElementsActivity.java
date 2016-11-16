@@ -13,14 +13,7 @@ import android.widget.ImageView;
 
 public class AddElementsActivity extends AppCompatActivity {
     private void handwriting1() {
-        ImageView hw1 = (ImageView) findViewById(R.id.hw ); //1
-        hw1.setOnClickListener( new View.OnClickListener() { //2
-            public void onClick(View v) {
-                Intent intent = new Intent(AddElementsActivity. this , //3
-                        HandwritingGeneratorActivity. class );
-                startActivity(intent);
-            }
-        });
+
     }
     private void clipart1() {
         ImageView ca1 = (ImageView) findViewById(R.id.ca ); //1
@@ -51,6 +44,14 @@ public class AddElementsActivity extends AppCompatActivity {
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        ImageView hw1 = (ImageView) findViewById(R.id.hw ); //1
+        hw1.setOnClickListener( new View.OnClickListener() { //2
+            public void onClick(View v) {
+                Intent intent = new Intent(AddElementsActivity. this , //3
+                        HandwritingGeneratorActivity. class );
+                startActivity(intent);
             }
         });
     }
