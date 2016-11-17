@@ -121,28 +121,35 @@ public class PostcardListActivity extends AppCompatActivity {
 //        startActivity(i);
     }
 
-    public static void serializePostcard(PostCard p){
+    public static void serializePostcard(final PostCard p){
+        Thread separateThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
 //        String filename = "testFilemost.ptc";
-        String filename = p.name + ".ptc";
+                String filename = p.name + ".ptc";
 
-        ObjectOutput out = null;
+                ObjectOutput out = null;
 
-        // get the path to save the serialized file
-        String sdcardPath = FileHelper.getPostcardSerializePath() + "/" + filename;
+                // get the path to save the serialized file
+                String sdcardPath = FileHelper.getPostcardSerializePath() + "/" + filename;
 
-        try {
-            out = new ObjectOutputStream(new FileOutputStream(sdcardPath));
-            out.writeObject(p);
-            out.close();
+                try {
+                    out = new ObjectOutputStream(new FileOutputStream(sdcardPath));
+                    out.writeObject(p);
+                    out.close();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            Log.v("FileNotFoundException", "FileNotFoundException");
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.v("IOException", "IOException");
-        }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Log.v("FileNotFoundException", "FileNotFoundException");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.v("IOException", "IOException");
+                }
+            }
+        });
+        separateThread.start();
+
 
     }
 
