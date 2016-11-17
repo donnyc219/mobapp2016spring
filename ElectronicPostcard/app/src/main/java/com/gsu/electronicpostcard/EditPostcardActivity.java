@@ -186,7 +186,14 @@ public class EditPostcardActivity extends AppCompatActivity {
         findViewById(R.id.btnDone).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PostcardListActivity.serializePostcard(Model.currentPostCard);
+                Thread separateThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        PostcardListActivity.serializePostcard(Model.currentPostCard);
+                    }
+                });
+                separateThread.start();
+                // Run this on separate thread because it takes time.
                 Intent intent = new Intent(Model.context, ViewCardActivity.class);
                 startActivity(intent);
             }

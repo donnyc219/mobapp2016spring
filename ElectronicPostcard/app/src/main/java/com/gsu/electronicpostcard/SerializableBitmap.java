@@ -35,7 +35,7 @@ public class SerializableBitmap implements Serializable {
         }
         byte byteBuffer[] = byteStream.toByteArray();
         Bitmap temp = BitmapFactory.decodeByteArray(byteBuffer, 0, byteBuffer.length);
-        bitmap = temp.copy(Bitmap.Config.ARGB_8888, true);
+         bitmap = temp.copy(Bitmap.Config.ARGB_8888, true);
     }
 
     public int getWidth() {return bitmap.getWidth();}
