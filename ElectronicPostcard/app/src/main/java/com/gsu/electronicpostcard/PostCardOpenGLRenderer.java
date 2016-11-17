@@ -85,7 +85,7 @@ public class PostCardOpenGLRenderer implements GLSurfaceView.Renderer {
             page.drawBoundingBox = false;
             page.render();
             page.drawBoundingBox = true;
-            createTexture(gl, page.bitmap.bitmap, i);
+            createTexture(gl, page.bitmap, i);
         }
 
         rotationYVelocity = -(float) Math.sqrt(2 * DECELERATION * 360); // For giggles

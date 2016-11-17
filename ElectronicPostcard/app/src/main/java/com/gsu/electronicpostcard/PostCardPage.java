@@ -6,6 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -17,19 +20,25 @@ public class PostCardPage  implements Serializable {
     final static int WIDTH = 800;
     final static int HEIGHT = 1131;
     final static int CORNER_RADIUS = 20; // Size of the corner of the bounding box
-    boolean drawBoundingBox = false;
-    SerializableBitmap bitmap;
-    private SerializableBitmap background;
+    boolean drawBackground = true;
+    transient boolean drawBoundingBox = false; // Not serialized
+    String backgroundName = ""; // To serialize
+    transient Bitmap bitmap; // Not serialized
+    private transient Bitmap background; // Not serialized
     SerializableBitmap doodle;
     private ArrayList<PostCardElement> elementList = new ArrayList<>();
 
     public PostCardPage() {
-        bitmap = new SerializableBitmap(Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888));
+        bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
         doodle = new SerializableBitmap(Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888));
     }
 
-    public void setBackground(Bitmap inputBitmap) {
-        background = new SerializableBitmap(Bitmap.createScaledBitmap(inputBitmap, WIDTH, HEIGHT, true));
+    public void setBackground(String resourceName) {
+        int id = Model.context.getResources().getIdentifier(resourceName, "drawable"
+                , Model.context.getPackageName());
+        backgroundName = resourceName;
+        Bitmap toAdd = BitmapFactory.decodeResource(Model.context.getResources(), id);
+        background = Bitmap.createScaledBitmap(toAdd, WIDTH, HEIGHT, true);
     }
 
     public void addElement(PostCardElement element) {
@@ -48,15 +57,21 @@ public class PostCardPage  implements Serializable {
     }
 
     public void render() {
+        if (bitmap == null) { // bitmap is null after deserialization.
+            bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
+        }
         Model.paint.setFilterBitmap(true);
         Model.paint.setStyle(Paint.Style.FILL);
-        Canvas canvas = new Canvas(bitmap.bitmap);
+        Canvas canvas = new Canvas(bitmap);
 
         // Draw background
         Model.paint.setColor(0xFFFFFFFF);
         canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), Model.paint);
-        if (background != null) {
-            canvas.drawBitmap(background.bitmap, 0, 0, Model.paint);
+        if (backgroundName != "" && drawBackground) {
+            if (background == null) {
+                setBackground(backgroundName);
+            }
+            canvas.drawBitmap(background, 0, 0, Model.paint);
         }
 
         // Draw elements

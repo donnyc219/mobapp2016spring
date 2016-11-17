@@ -34,7 +34,7 @@ public class TemplateSelectionActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return (Fragment)TemplateSelectionFragment.newInstance(datasource.get(position));
+            return TemplateSelectionFragment.newInstance(datasource.get(position));
         }
 
 
@@ -120,9 +120,7 @@ public class TemplateSelectionActivity extends AppCompatActivity {
 
         int k = selectTempalteViewpager.getCurrentItem();
         String imageFilename = templateFilename.get(k); // image name of the selected template
-        Bitmap template = BitmapFactory.decodeResource(getResources(),
-                getResources().getIdentifier(imageFilename, "drawable", this.getPackageName()));
-        Model.currentPostCard.changeTemplate(template);
+        Model.currentPostCard.changeTemplate(imageFilename);
         Intent i = new Intent(this, EditPostcardActivity.class);
         startActivity(i);
     }

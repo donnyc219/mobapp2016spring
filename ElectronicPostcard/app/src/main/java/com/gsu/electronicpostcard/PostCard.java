@@ -24,12 +24,13 @@ public class PostCard  implements Serializable {
         }
     }
 
-    public void changeTemplate(Bitmap template) {
-        pages[0].setBackground(template);
-        pages[3].setBackground(template);
-        Bitmap blank = Bitmap.createBitmap(PostCardPage.WIDTH, PostCardPage.HEIGHT, Bitmap.Config.ARGB_8888);
-        pages[1].setBackground(blank);
-        pages[2].setBackground(blank);
+    public void changeTemplate(String resourceName) {
+        pages[0].setBackground(resourceName);
+        pages[1].setBackground(resourceName);
+        pages[2].setBackground(resourceName);
+        pages[3].setBackground(resourceName);
+        pages[1].drawBackground = false;
+        pages[2].drawBackground = false;
     }
 
     public Bitmap drawToBitmap() {
@@ -44,17 +45,17 @@ public class PostCard  implements Serializable {
 
         Matrix matrix = new Matrix();
         matrix.setTranslate(BITMAP_PADDING, BITMAP_PADDING);
-        canvas.drawBitmap(pages[3].bitmap.bitmap, matrix, null);
+        canvas.drawBitmap(pages[3].bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING + PostCardPage.WIDTH, BITMAP_PADDING);
-        canvas.drawBitmap(pages[0].bitmap.bitmap, matrix, null);
+        canvas.drawBitmap(pages[0].bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING, BITMAP_PADDING + BITMAP_GAP + PostCardPage.HEIGHT);
-        canvas.drawBitmap(pages[1].bitmap.bitmap, matrix, null);
+        canvas.drawBitmap(pages[1].bitmap, matrix, null);
 
         matrix.setTranslate(BITMAP_PADDING + PostCardPage.WIDTH,
                 BITMAP_PADDING + BITMAP_GAP + PostCardPage.HEIGHT);
-        canvas.drawBitmap(pages[2].bitmap.bitmap, matrix, null);
+        canvas.drawBitmap(pages[2].bitmap, matrix, null);
         return result;
     }
 }
