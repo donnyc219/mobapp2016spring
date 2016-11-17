@@ -52,7 +52,7 @@ public class SendOptionsActivity extends AppCompatActivity {
         save.setOnClickListener(new  View.OnClickListener(){
             public void onClick(View v) {
                 takescreen();
-                Toast.makeText(Model.context, "Photo saved sucessfully!", Toast.LENGTH_SHORT);
+                Toast.makeText(Model.context, "Photo saved successfully!", Toast.LENGTH_SHORT).show();
             }
         });
 
